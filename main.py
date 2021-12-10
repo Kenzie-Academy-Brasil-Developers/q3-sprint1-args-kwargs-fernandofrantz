@@ -15,16 +15,30 @@ def get_multiplied_amount(mult, *numbers):
 
 def word_concatenator(*args):
     final_str = ''
+    counter = 0
     for word in args:
-        final_str += word + ' '
+        if counter < len(args) -1:
+            final_str += word + ' '
+        else:
+            final_str += word
+        counter += 1
     return final_str
 
 
-def inverted_word_factory(*args):
+def inverted_word_factory(*words):
     final_str = ''
-    for word in args:
-        final_str += word + ' '
-    return final_str[::-1]
+    counter = 0
+    for word in words:
+
+        if counter <= len(words):
+            final_str += word + ' '
+        else:
+            final_str += word
+        counter += 1
+    final_str = final_str[::-1]
+    return final_str[1:]
+
+
 
 
 def dictionary_separator(**kwargs):
@@ -59,4 +73,15 @@ def purchase_logger(**kwargs):
 
 
 def world_cup_logger(country, *args):
-    return f'{country} - {sorted(args)}'
+    years = sorted(args)
+    final_str = f'{country} - '
+    counter = 0
+    for year in years:
+        if counter < len(args) -2:
+            final_str += f'{year}, '
+        elif counter < len(args) -1:
+            final_str += f'{year} e '
+        else:
+            final_str += f'{year}'
+        counter += 1
+    return final_str
